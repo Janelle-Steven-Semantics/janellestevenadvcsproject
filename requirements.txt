@@ -1,0 +1,10 @@
+appdirs==1.4.0
+beautifulsoup4==4.5.3
+click==6.7
+futures==3.0.5
+goslate==1.5.1
+packaging==16.8
+PyDictionary==1.5.2
+pyparsing==2.1.10
+requests==2.13.0
+six==1.10.0
