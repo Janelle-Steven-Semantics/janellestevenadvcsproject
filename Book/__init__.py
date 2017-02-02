@@ -10,9 +10,9 @@ for line in sample:
     if dictionary.get_synonym("happy") in line:
         print(line)
         #happycount + 1     total number lines it occurs
-        sline = line
-        sum(sline.count(x) for x in (dictionary.get_synonym("happy")))
-        print("There are " + wordcount + "Occurrences Like Happy")
+        #sline = line
+        happycount = sum(line.count(x) for x in (dictionary.get_synonym("happy")))
+       # print("There are " + wordcount + "Occurrences Like Happy")
 
 
      # insert any "word" that you want to search for
@@ -20,9 +20,9 @@ for line in sample:
         print(line)
        # linenumber #how do we get the line number?
        # sadcount + 1  #this counts total,
-        sline = line
-        sum(sline.count(x) for x in (dictionary.get_synonym("sad")))  #  how do we count the number of occurences in line?
-        print("There are " + wordcount + "sad")
+        #sline = line
+        sadcount = sum(line.count(x) for x in (dictionary.get_synonym("sad")))  #  how do we count the number of occurences in line?
+       # print("There are " + wordcount + "sad")
 
                 #What parameters determine tone?
 
