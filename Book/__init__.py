@@ -2,41 +2,31 @@
 from PyDictionary import PyDictionary
 dictionary = PyDictionary()
 
-print(dictionary.get_synonym("happy"))
+# initialize word count system
+word = "happy" # the word we're looking for (including synonyms)
+wordcount = 0 # how many instances of the word
+wordlist = [] # what synonyms we found
+
+# open up the book!
 sample = open("Loadbook.txt")
+
+# walk through the book, line by line
 for line in sample:
-
-    # insert any "word" that you want to search for
-    if dictionary.get_synonym("happy") in line:
+    
+    # is our search term in the line?
+    if word in line:
+        if word not in wordlist:
+            wordlist.append(word)
         print(line)
-        #happycount + 1     total number lines it occurs
-        #sline = line
-        happycount = sum(line.count(x) for x in (dictionary.get_synonym("happy")))
-       # print("There are " + wordcount + "Occurrences Like Happy")
+        wordcount = wordcount + line.count(word)
+        
+    # are any synonyms in the line?
+    for w in dictionary.synonym(word):
+        if w in line:
+            if w not in wordlist:
+                wordlist.append(w)
+            print(line)
+            wordcount = wordcount + line.count(w)
 
-
-     # insert any "word" that you want to search for
-    if dictionary.get_synonym("sad") in line:
-        print(line)
-       # linenumber #how do we get the line number?
-       # sadcount + 1  #this counts total,
-        #sline = line
-        sadcount = sum(line.count(x) for x in (dictionary.get_synonym("sad")))  #  how do we count the number of occurences in line?
-       # print("There are " + wordcount + "sad")
-
-                #What parameters determine tone?
-
-    #check every 4 lines
-
-        # count some indiscriminate synonyms OR Synonyms from book
-
-
-
-
-
-        # do some math good - bad
-            #if 0 bad = good
-            # if bad > good tone = bad
-                # if difference small or big
-
-
+# print out the results
+print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)

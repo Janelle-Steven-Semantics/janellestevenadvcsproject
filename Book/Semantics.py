@@ -2,7 +2,7 @@
 import PyDictionary
 dictionary = PyDictionary()
 
-+print(dictionary.get_synonym("happy"))
++print(dictionary.synonym("happy"))
 sample = open("Loadbook.txt")
 
 for line in sample:
