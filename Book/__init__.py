@@ -3,7 +3,7 @@ from PyDictionary import PyDictionary
 dictionary = PyDictionary()
 
 # initialize word count system
-searchlist = ['happy','sad','good','bad']
+searchlist = ['happy', 'sad', 'good', 'bad', 'death', 'peace', 'fear', 'anxious', 'life', 'gloomy']
 
 
 for listword in range(len(searchlist)):
@@ -24,13 +24,14 @@ for listword in range(len(searchlist)):
             print(line)
             wordcount = wordcount + line.count(word)
             print("Occurs on line " + str(linecount))
-    # are any synonyms in the line?
+
         for w in dictionary.synonym(word):
-             if w in line:
+            if w in line:
                 if w not in wordlist:
                     wordlist.append(w)
                     print(line)
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
+
 # print out the results
     print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)
