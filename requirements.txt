@@ -3,6 +3,7 @@ beautifulsoup4==4.5.3
 click==6.7
 futures==3.0.5
 goslate==1.5.1
+nltk==3.2.2
 packaging==16.8
 PyDictionary==1.5.2
 pyparsing==2.1.10
