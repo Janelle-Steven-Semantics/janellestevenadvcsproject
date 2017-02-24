@@ -18,13 +18,13 @@ for listword in range(len(searchlist)):
     for line in sample:
         linecount = linecount + 1  #counts the line number
     # is our search term in the line?
+
         if word in line:
             if word not in wordlist:
                 wordlist.append(word)
             print(line)
             wordcount = wordcount + line.count(word)
             print("Occurs on line " + str(linecount))
-
         for w in dictionary.synonym(word):
             if w in line:
                 if w not in wordlist:
@@ -33,5 +33,8 @@ for listword in range(len(searchlist)):
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
 
+    usablewordlist = [i for i in range(10)]
+    for j in range(0,usablewordlist,1):
+        i = wordcount
 # print out the results
     print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)
