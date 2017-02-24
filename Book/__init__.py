@@ -34,7 +34,7 @@ for listword in range(len(searchlist)):
                     print("Occurs on line " + str(linecount))
 
     usablewordlist = [i for i in range(10)]
-    for j in range(0,usablewordlist,1):
+    for j in range(0,10,1):
         i = wordcount
 
     highesttone = max(usablewordlist)
