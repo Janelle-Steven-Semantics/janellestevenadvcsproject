@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 from PyDictionary import PyDictionary
+import re
 dictionary = PyDictionary()
 
 # initialize word count system
-searchlist = ['happy','sad','good','bad']
+searchlist = ["good", "sweet"]
 
 
 for listword in range(len(searchlist)):
@@ -33,4 +34,6 @@ for listword in range(len(searchlist)):
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
 # print out the results
-    print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)
+print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
+
+
