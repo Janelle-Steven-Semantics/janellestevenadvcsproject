@@ -36,5 +36,8 @@ for listword in range(len(searchlist)):
     usablewordlist = [i for i in range(10)]
     for j in range(0,usablewordlist,1):
         i = wordcount
+
+    highesttone = max(usablewordlist)
+    print(highesttone)
 # print out the results
     print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)
