@@ -1,14 +1,11 @@
 #!/usr/bin/env python
+import nltk
+nltk.download()
+from nltk import FreqDist
 from PyDictionary import PyDictionary
-import re
 dictionary = PyDictionary()
 
-# initialize word count system
-<<<<<<< HEAD
 searchlist = ["good", "sweet"]
-=======
-searchlist = ['happy', 'sad', 'good', 'bad', 'death', 'peace', 'fear', 'anxious', 'life', 'gloomy']
->>>>>>> origin/master
 
 
 for listword in range(len(searchlist)):
@@ -38,12 +35,10 @@ for listword in range(len(searchlist)):
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
 
-    usablewordlist = [i for i in range(10)]
-    for j in range(0,10,1):
-        i = wordcount
-
-    highesttone = max(usablewordlist)
-    print(highesttone)
+                fdist1 = FreqDist(sample)
+                fdist1
+                vocabulary1 = fdist1.keys()
+                vocabulary1[:50]
 # print out the results
 print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
 
