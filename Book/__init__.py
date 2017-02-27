@@ -3,7 +3,7 @@ from PyDictionary import PyDictionary
 dictionary = PyDictionary()
 
 # initialize word count system
-searchlist = ['happy', 'sad', 'good', 'bad', 'death', 'peace', 'fear', 'anxious', 'life', 'gloomy']
+searchlist = ['happy', 'sad', 'good', 'bad', 'peace', 'death', 'light', 'fear', 'humour', 'anxious', 'life', 'gloomy', 'respect']
 
 
 for listword in range(len(searchlist)):
@@ -33,16 +33,44 @@ for listword in range(len(searchlist)):
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
 
-        usablewordlist = [i for i in range(10)]
-        for j in range(0,10,1):
+        usablewordlist = [i for i in range(11)]
+        for j in range(0,11,1):
           i = wordcount
 
         highesttone = max(usablewordlist)
         print(highesttone)
 
+        n = 1
         if usablewordlist[2n-1] > usablewordlist[2n]:
             n = n + 1
-            print("the tone for line " + str(linecount) + "is slightly good")
+            print("the tone for line " + str(linecount) + "Happy")
+        if usablewordlist[1] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "Sad")
+        if usablewordlist[2] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "good")
+        if usablewordlist[1] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "bad")
+        if usablewordlist[3] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "peace")
+        if usablewordlist[4] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "death")
+        if usablewordlist[5] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "light")
+        if usablewordlist[6] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "fear")
+        if usablewordlist[7] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "humour")
+        if usablewordlist[8] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "anxious")
+        if usablewordlist[9] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "life")
+        if usablewordlist[10] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "gloomy")
+        if usablewordlist[11] = max(usablewordlist):
+            print("the tone for line " + str(linecount) + "respect")
+
+
+
 
 
 # print out the results
