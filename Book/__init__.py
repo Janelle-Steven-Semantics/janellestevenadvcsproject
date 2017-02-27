@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 from PyDictionary import PyDictionary
-import re
 dictionary = PyDictionary()
 
 # initialize word count system
-<<<<<<< HEAD
-searchlist = ["good", "sweet"]
-=======
 searchlist = ['happy', 'sad', 'good', 'bad', 'death', 'peace', 'fear', 'anxious', 'life', 'gloomy']
->>>>>>> origin/master
 
 
 for listword in range(len(searchlist)):
@@ -51,6 +46,6 @@ for listword in range(len(searchlist)):
 
 
 # print out the results
-print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
+    print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
 
 

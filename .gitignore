@@ -4,13 +4,8 @@
 /.Python
 /Scripts/
 /tcl/
-/.idea/
+.idea/workspace.xml
+
 Book/Synonym_extension.py
-
 Book/Experimentation.py
-
-.idea/workspace.xml
-
 Book/jaf;fasj;asf.py
-
-.idea/workspace.xml
