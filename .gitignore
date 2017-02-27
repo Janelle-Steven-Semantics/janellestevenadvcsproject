@@ -4,6 +4,7 @@
 /.Python
 /Scripts/
 /tcl/
+/.idea/
 Book/Synonym_extension.py
 
 Book/Experimentation.py
