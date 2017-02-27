@@ -33,11 +33,17 @@ for listword in range(len(searchlist)):
                     wordcount = wordcount + line.count(w)
                     print("Occurs on line " + str(linecount))
 
-    usablewordlist = [i for i in range(10)]
-    for j in range(0,10,1):
-        i = wordcount
+        usablewordlist = [i for i in range(10)]
+        for j in range(0,10,1):
+          i = wordcount
 
-    highesttone = max(usablewordlist)
-    print(highesttone)
+        highesttone = max(usablewordlist)
+        print(highesttone)
+
+        if usablewordlist[2n-1] > usablewordlist[2n]:
+            n = n + 1
+            print("the tone for line " + str(linecount) + "is slightly good")
+
+
 # print out the results
     print("There are {} Occurrences like {} ({})").format(wordcount, word, wordlist)
