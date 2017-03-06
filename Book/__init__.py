@@ -1,43 +1,42 @@
 #!/usr/bin/env python
+from Synonym_extension import Synonym_extension
 from PyDictionary import PyDictionary
-dictionary = PyDictionary()
+thesaurus = PyDictionary()
 
-# initialize word count system
-searchlist = ['happy', 'sad', 'good', 'bad', 'peace', 'death', 'light', 'fear', 'humour', 'anxious', 'life', 'gloomy', 'respect']
-wordcounts = [len(searchlist)]
+terms = [
+    'happy',
+    'sad',
+    'good',
+    'bad',
+    'death',
+    'peace',
+    'fear',
+    'anxious',
+    'life',
+    'gloomy'
+]
+searchResults = []
+for term in terms:
+    searchResults.append(Synonym_extension(term))
 
-for listword in range(len(searchlist)):
-    word = searchlist[listword]  # the word we're looking for (including synonyms)
-    wordcount = 0  # how many instances of the word
-    wordlist = []  # what synonyms we found
+book = open('loadbook.txt')
+for line in book:
+    for term in searchResults:
+        if term.term in line:
+            term.increment()
 
-# open up the book!
-    sample = open("Loadbook.txt")
-    linecount = 0
-# walk through the book, line by line
-    for line in sample:
-        linecount = linecount + 1  #counts the line number
-    # is our search term in the line?
+        for synonym in term.synonyms:
+            if synonym in line:
+                term.increment(synonym)
 
-        if word in line:
-            if word not in wordlist:
-                wordlist.append(word)
-            #print(line)
-            wordcounts[listword] += line.count(word)
-            #print("Occurs on line " + str(linecount))
-        for w in dictionary.synonym(word):
-            if w in line:
-                if w not in wordlist:
-                    wordlist.append(w)
-                    #print(line)
-                    wordcount = wordcount + line.count(w)
-                    #print("Occurs on line " + str(linecount))
-
-        # print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
-    print("There are {} occurrences like {} ({})".format(wordcounts[listword], searchlist[listword], wordlist))
+for term in searchResults:
+    print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
 
 
-usablewordlist = [13]
+
+
+
+usablewordlist = [searchlist]
 for j in range(len(usablewordlist)):
     usablewordlist.insert(j, wordcount)
 
