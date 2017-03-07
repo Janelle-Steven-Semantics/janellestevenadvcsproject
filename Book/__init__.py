@@ -1,45 +1,38 @@
 #!/usr/bin/env python
-import nltk
-nltk.download()
-from nltk import FreqDist
+#IMPORTANT IMPORTS. You might need to download packages in NLTK
+from Synonym_extension import Synonym_extension
 from PyDictionary import PyDictionary
-dictionary = PyDictionary()
+import nltk
+from PyDictionary import PyDictionary
+nltk.download()
+from nltk.tokenize import sent_tokenize
+from nltk.book import*
+from nltk.corpus import*
+thesaurus = PyDictionary()
 
-searchlist = ["good", "sweet"]
+terms = ['happy', 'sad', 'strange']
+searchResults = []
+for term in terms:
+    searchResults.append(Synonym_extension(term))
 
+#Hey Steven, this is a way to get the Project Gutenberg books
+book = 'austen-sense.txt'
+book = nltk.corpus.gutenberg.raw(book)
+tokens = nltk.sent_tokenize(book)
 
-for listword in range(len(searchlist)):
-    word = searchlist[listword]  # the word we're looking for (including synonyms)
-    wordcount = 0  # how many instances of the word
-    wordlist = []  # what synonyms we found
+#told you the tokenizer would come in handy
+#searches the broken down sentences
+#prints in order--we definitely need the line numbers printed
 
-# open up the book!
-    sample = open("Loadbook.txt")
-    linecount = 0
-# walk through the book, line by line
-    for line in sample:
-        linecount = linecount + 1  #counts the line number
-    # is our search term in the line?
+for token in tokens:
+    for term in searchResults:
+        if term.term in token:
+            term.increment()
+            print(token)
+        for synonym in term.synonyms:
+            if synonym in token:
+                term.increment(synonym)
+                print(token)
 
-        if word in line:
-            if word not in wordlist:
-                wordlist.append(word)
-            print(line)
-            wordcount = wordcount + line.count(word)
-            print("Occurs on line " + str(linecount))
-        for w in dictionary.synonym(word):
-            if w in line:
-                if w not in wordlist:
-                    wordlist.append(w)
-                    print(line)
-                    wordcount = wordcount + line.count(w)
-                    print("Occurs on line " + str(linecount))
-
-                fdist1 = FreqDist(sample)
-                fdist1
-                vocabulary1 = fdist1.keys()
-                vocabulary1[:50]
-# print out the results
-print("There are {} Occurrences like {} ({})".format(wordcount, word, wordlist))
-
-
+for term in searchResults:
+ print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
