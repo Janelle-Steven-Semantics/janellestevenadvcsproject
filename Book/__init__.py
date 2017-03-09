@@ -50,53 +50,28 @@ termsgood = [
     'happy',
     'good',
     'peace',
-    'light']
+    'kind']
 for token in tokens:
     for term in searchResults:
-        if term.term in token:
+        if term.term in token and term.term in termsgood:
             term.increment()
-            print(token + "/////")
-            #tone.count = term.count
-            tone = str(term)
-            #print(tone.count)
-            if term in termsbad:
-                print("tone is darker")
-                print(term)
-
-                if tone in ['sad']:
-                    print("tone is sad")
-                    print(term)
-            if term in termsgood:
-                print("tone is lighter")
-                print(term)
-                if tone in 'happy':
-                    print("tone is happy")
-                    print(term)
-
-
+            print(token + "/////This tone is good! :)")
+        if term.term in token and term.term in termsbad:
+            term.increment()
+            print(token + "/////This tone is bad! :(")
 
 
 
         for synonym in term.synonyms:
-            if synonym in token:
+            if synonym in token and term.term in termsgood:
                 term.increment(synonym)
-                print(token + "/////")
+                print(token+ "/////This tone is good! :)")
+            if synonym in token and term.term in termsbad:
+                term.increment(synonym)
+                print(token + "/////This tone is bad!")
                 #tone.count = term.count
                 #print(tone.count)
-                tone = str(term)
-                if term in termsbad:
-                    print("tone is darker")
-                    print(str(term))
 
-                    if tone in ['sad']:
-                        print("tone is sad")
-                        print(str(term))
-                if term in termsgood:
-                    print("tone is lighter")
-                    print(str(term))
-                    if tone in 'happy':
-                        print("tone is happy")
-                        print(str(term))
 for term in searchResults:
     print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
 
