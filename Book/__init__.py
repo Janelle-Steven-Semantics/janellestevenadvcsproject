@@ -10,7 +10,7 @@ from nltk.corpus import*
 from Synonym_extension import Synonym_extension
 from PyDictionary import PyDictionary
 thesaurus = PyDictionary()
-shit
+
 terms = [
     'happy',
     'sad',
@@ -23,7 +23,10 @@ terms = [
     'life',
     'gloomy',
     'dark',
-    'light'
+    'light',
+    'worried',
+    'confident',
+    'cruel'
 ]
 searchResults = []
 for term in terms:
@@ -38,6 +41,9 @@ tokens = nltk.sent_tokenize(book)
 #searches the broken down sentences
 #prints in order--we definitely need the line numbers printed
 tone = 0
+
+
+
 termsbad = [
     'sad',
     'bad',
@@ -45,33 +51,93 @@ termsbad = [
     'fear',
     'anxious',
     'gloomy',
-    'dark',]
+    'dark',
+    'worried',
+    'cruel']
+
+termsominous = [
+    'dank',
+    'death',
+    'fear',
+    'anxious',
+    'gloomy',
+    'dark',
+    'worried',
+    'cruel']
 termsgood = [
     'happy',
     'good',
     'peace',
-    'kind']
+    'kind',
+    'confident',
+    'light']
+termspeaceful = [
+    'peace',
+    'calm',
+    'kind',
+    'wonderful',
+    'easy',
+    'light']
+termscandid = [
+    'offense',
+    'rude',
+    'truth',
+]
+termsaggressive = [
+    'aggressive',
+    'harm',
+    'anger',
+    'rough',
+]
+
 for token in tokens:
     for term in searchResults:
-        if term.term in token and term.term in termsgood:
+        if term.term in token and term.term in termsgood and term.term not in 'no':
             term.increment()
-            print(token + "/////This tone is good! :)")
-        if term.term in token and term.term in termsbad:
+            print("/////This tone is good! :)")
+
+        if term.term in token and term.term in termsbad and term.term not in 'no':
             term.increment()
-            print(token + "/////This tone is bad! :(")
+            print("/////This tone is bad! :(")
+        if term.term in token and term.term in termsominous and term.term not in 'no':
+            term.increment()
+            print("/////This tone is ominous!")
+        if term.term in token and term.term in termspeaceful and term.term not in 'no':
+            term.increment()
+            print("/////This tone is peaceful!")
+        if term.term in token and term.term in termsaggressive and term.term not in 'no':
+            term.increment()
+            print("/////This tone is aggressive!")
+        if term.term in token and term.term in termscandid and term.term not in 'no':
+            term.increment()
+            print("/////This tone is candid!")
 
 
 
         for synonym in term.synonyms:
             if synonym in token and term.term in termsgood:
                 term.increment(synonym)
-                print(token+ "/////This tone is good! :)")
+                print("/////This tone is good! :)")
             if synonym in token and term.term in termsbad:
                 term.increment(synonym)
-                print(token + "/////This tone is bad!")
+                print("/////This tone is bad!")
+            if synonym in token and term.term in termsominous:
+                term.increment(synonym)
+                print("/////This tone is ominous! :)")
+            if synonym in token and term.term in termspeaceful:
+                term.increment(synonym)
+                print("/////This tone is peaceful!")
+            if synonym in token and term.term in termscandid:
+                term.increment(synonym)
+                print("/////This tone is candid! :)")
+            if synonym in token and term.term in termsaggressive:
+                term.increment(synonym)
+                print("/////This tone is aggressive!")
+
+
                 #tone.count = term.count
                 #print(tone.count)
 
+
 for term in searchResults:
     print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
-
