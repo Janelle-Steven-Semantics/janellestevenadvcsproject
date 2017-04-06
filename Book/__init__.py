@@ -26,7 +26,14 @@ terms = [
     'light',
     'worried',
     'confident',
-    'cruel'
+    'cruel',
+    'aggressive',
+    'harm',
+    'anger',
+    'rough',
+    'offense',
+    'rude',
+    'truth',
 ]
 searchResults = []
 for term in terms:
@@ -47,13 +54,7 @@ tone = 0
 termsbad = [
     'sad',
     'bad',
-    'death',
-    'fear',
-    'anxious',
-    'gloomy',
-    'dark',
-    'worried',
-    'cruel']
+    ]
 
 termsominous = [
     'dank',
