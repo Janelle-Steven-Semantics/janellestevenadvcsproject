@@ -71,14 +71,13 @@ termsgood = [
     'peace',
     'kind',
     'confident',
-    'light']
+    'light',
+    'wonderful'
+]
 termspeaceful = [
     'peace',
     'calm',
-    'kind',
-    'wonderful',
-    'easy',
-    'light']
+    'easy']
 termscandid = [
     'offense',
     'rude',
