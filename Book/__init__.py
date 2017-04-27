@@ -169,7 +169,7 @@ for token in tokens:
 
 
 tokencount= 0
-for token in tokens[0:tokens.number()/3]:
+for token in tokens[0:tokens.()/3]:
     ++tokencount
     if gocount > bacount:
         print("For the first third of the book, the tone is mostly good")
