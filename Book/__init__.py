@@ -89,52 +89,104 @@ termsaggressive = [
     'anger',
     'rough',
 ]
+termshappy = [
+    'happy',
+    'good',
+    'laugh',
+    'joy',
+]
+
+omcount = 0
+gocount = 0
+bacount = 0
+pecount = 0
+agcount = 0
+cacount = 0
+hacount = 0
 
 for token in tokens:
     for term in searchResults:
         if term.term in token and term.term in termsgood and term.term not in 'no':
             term.increment()
+            ++gocount
             print("/////This tone is good! :)")
 
         if term.term in token and term.term in termsbad and term.term not in 'no':
             term.increment()
+            ++bacount
             print("/////This tone is bad! :(")
         if term.term in token and term.term in termsominous and term.term not in 'no':
             term.increment()
+            ++omcount
             print("/////This tone is ominous!")
         if term.term in token and term.term in termspeaceful and term.term not in 'no':
             term.increment()
+            ++pecount
             print("/////This tone is peaceful!")
         if term.term in token and term.term in termsaggressive and term.term not in 'no':
             term.increment()
+            ++agcount
             print("/////This tone is aggressive!")
         if term.term in token and term.term in termscandid and term.term not in 'no':
             term.increment()
+            ++cacount
             print("/////This tone is candid!")
-
+        if term.term in token and term.term in termscandid and term.term not in 'no':
+            term.increment()
+            ++cacount
+            print("/////This tone is candid!")
+        if term.term in token and term.term in termshappy and term.term not in 'no':
+            term.increment()
+            ++hacount
+            print("/////This tone is Happy!")
 
 
         for synonym in term.synonyms:
             if synonym in token and term.term in termsgood:
                 term.increment(synonym)
+                ++gocount
                 print("/////This tone is good! :)")
             if synonym in token and term.term in termsbad:
                 term.increment(synonym)
+                ++bacount
                 print("/////This tone is bad!")
             if synonym in token and term.term in termsominous:
                 term.increment(synonym)
+                ++omcount
                 print("/////This tone is ominous! :)")
             if synonym in token and term.term in termspeaceful:
                 term.increment(synonym)
+                ++pecount
                 print("/////This tone is peaceful!")
             if synonym in token and term.term in termscandid:
                 term.increment(synonym)
+                ++cacount
                 print("/////This tone is candid! :)")
-            if synonym in token and term.term in termsaggressive:
+            if synonym in token and term.term in termshappy:
                 term.increment(synonym)
-                print("/////This tone is aggressive!")
+                ++hacount
+                print("/////This tone is Happy!")
 
 
+tokencount= 0
+for token in tokens[0:tokens.number()/3]:
+    ++tokencount
+    if gocount > bacount:
+        print("For the first third of the book, the tone is mostly good")
+        if pecount > tokencount/10:
+            print("For the first third of the book, the tone is also peaceful")
+        if hacount > 10:
+            print("and happy")
+    else:
+        print("For the first third of the book, the tone is mostly bad")
+
+
+
+#for token in tokens[tokens.size() / 3: tokens.size() * 2 / 3]:
+
+
+
+#for token in tokens[tokens.size() * 2 / 3: tokens.size()]:
                 #tone.count = term.count
                 #print(tone.count)
 
