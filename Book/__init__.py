@@ -30,11 +30,13 @@ terms = [
     'aggressive',
     'harm',
     'anger',
-    'rough',
     'offense',
     'rude',
     'truth',
-]
+    'afraid',
+    'regret',
+    'scold',
+    ]
 searchResults = []
 for term in terms:
     searchResults.append(Synonym_extension(term))
@@ -54,15 +56,16 @@ tone = 0
 termsbad = [
     'sad',
     'bad',
+    'afraid',
+    'regret',
     ]
 
 termsominous = [
-    'dank',
     'death',
     'fear',
     'anxious',
     'gloomy',
-    'dark',
+    'dank',
     'worried',
     'cruel']
 termsgood = [
@@ -87,7 +90,7 @@ termsaggressive = [
     'aggressive',
     'harm',
     'anger',
-    'rough',
+    'scold'
 ]
 termshappy = [
     'happy',
@@ -109,12 +112,14 @@ for token in tokens:
         if term.term in token and term.term in termsgood and term.term not in 'no':
             term.increment()
             ++gocount
-            print("/////This tone is good! :)")
+            print(token)
+            print("/////This tone is good!")
 
         if term.term in token and term.term in termsbad and term.term not in 'no':
             term.increment()
             ++bacount
-            print("/////This tone is bad! :(")
+            print(token)
+            print("/////This tone is bad!")
         if term.term in token and term.term in termsominous and term.term not in 'no':
             term.increment()
             ++omcount
@@ -127,10 +132,6 @@ for token in tokens:
             term.increment()
             ++agcount
             print("/////This tone is aggressive!")
-        if term.term in token and term.term in termscandid and term.term not in 'no':
-            term.increment()
-            ++cacount
-            print("/////This tone is candid!")
         if term.term in token and term.term in termscandid and term.term not in 'no':
             term.increment()
             ++cacount
@@ -169,17 +170,11 @@ for token in tokens:
 
 
 tokencount= 0
-for token in tokens[0:tokens.()/3]:
-    ++tokencount
+for token in tokens[0:]:
     if gocount > bacount:
-        print("For the first third of the book, the tone is mostly good")
-        if pecount > tokencount/10:
-            print("For the first third of the book, the tone is also peaceful")
-        if hacount > 10:
-            print("and happy")
+        print("For the first third of the book, the tone is mostly good.")
     else:
-        print("For the first third of the book, the tone is mostly bad")
-
+        print("For the first third of the book, the tone is mostly bad.")
 
 
 #for token in tokens[tokens.size() / 3: tokens.size() * 2 / 3]:
