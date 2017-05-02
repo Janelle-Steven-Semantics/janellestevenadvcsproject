@@ -106,8 +106,9 @@ pecount = 0
 agcount = 0
 cacount = 0
 hacount = 0
-
+tokencount = 0;
 for token in tokens:
+    ++tokencount
     for term in searchResults:
         if term.term in token and term.term in termsgood and term.term not in 'no':
             term.increment()
@@ -168,11 +169,23 @@ for token in tokens:
                 ++hacount
                 print("/////This tone is Happy!")
 
+tokecount = 0
 
+<<<<<<< HEAD
 tokencount= 0
 for token in tokens[0:]:
     if gocount > bacount:
         print("For the first third of the book, the tone is mostly good.")
+=======
+for token in tokens[0:tokencount/3]:
+    tokecount
+    if gocount > bacount:
+        print("For the first third of the book, the tone is mostly good")
+        if pecount > tokecount/10:
+            print("For the first third of the book, the tone is also peaceful")
+        if hacount > tokecount/10:
+            print("and happy")
+>>>>>>> origin/master
     else:
         print("For the first third of the book, the tone is mostly bad.")
 
