@@ -111,7 +111,8 @@ tokencount = 0;
 for token in tokens:
     ++tokencount
     for term in searchResults:
-        if term.term in token and term.term in termsgood:
+        if term.term in token and term.term in termsgood and 'dis' not in term and 'un' not in term \
+                and 'in' not in term and 'anti' not in term:
             term.increment()
             ++gocount
             print(token)
@@ -127,7 +128,8 @@ for token in tokens:
             ++omcount
             print(token)
             print("/////This tone is ominous!")
-        if term.term in token and term.term in termspeaceful:
+        if term.term in token and term.term in termspeaceful and 'dis' not in term and 'in' not in term \
+                and 'anti' not in term:
             term.increment()
             ++pecount
             print("/////This tone is peaceful!")
@@ -139,14 +141,16 @@ for token in tokens:
             term.increment()
             ++cacount
             print("/////This tone is candid!")
-        if term.term in token and term.term in termshappy:
+        if term.term in token and term.term in termshappy and 'dis' not in term and 'in' not in term \
+                and 'anti' not in term:
             term.increment()
             ++hacount
             print("/////This tone is Happy!")
 
 
         for synonym in term.synonyms:
-            if synonym in token and term.term in termsgood:
+            if synonym in token and term.term in termsgood and 'dis' not in term and 'in' not in term \
+                and 'anti' not in term:
                 term.increment(synonym)
                 ++gocount
                 print("/////This tone is good! :)")
@@ -158,7 +162,8 @@ for token in tokens:
                 term.increment(synonym)
                 ++omcount
                 print("/////This tone is ominous! :)")
-            if synonym in token and term.term in termspeaceful:
+            if synonym in token and term.term in termspeaceful and 'dis' not in term and 'in' not in term \
+                and 'anti' not in term:
                 term.increment(synonym)
                 ++pecount
                 print("/////This tone is peaceful!")
@@ -166,7 +171,8 @@ for token in tokens:
                 term.increment(synonym)
                 ++cacount
                 print("/////This tone is candid! :)")
-            if synonym in token and term.term in termshappy:
+            if synonym in token and term.term in termshappy and 'dis' not in term and 'in' not in term \
+                and 'anti' not in term:
                 term.increment(synonym)
                 ++hacount
                 print("/////This tone is Happy!")
