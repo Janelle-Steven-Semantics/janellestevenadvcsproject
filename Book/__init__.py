@@ -64,6 +64,7 @@ termsbad = [
     'bad',
     'afraid',
     'regret',
+    'dislike',
     ]
 
 termsominous = [
@@ -81,7 +82,8 @@ termsgood = [
     'kind',
     'confident',
     'light',
-    'wonderful'
+    'wonderful',
+    'hope'
 ]
 termspeaceful = [
     'peace',
