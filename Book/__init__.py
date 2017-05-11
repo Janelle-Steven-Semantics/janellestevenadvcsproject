@@ -10,6 +10,11 @@ from nltk.corpus import*
 from Synonym_extension import Synonym_extension
 from PyDictionary import PyDictionary
 thesaurus = PyDictionary()
+import sys
+
+f = open("test.out", 'w')
+sys.stdout = f
+
 
 terms = [
     'happy',
@@ -100,6 +105,10 @@ termshappy = [
     'joy',
 ]
 
+badprefixes= [
+    'un', 'anti', 'in', 'dis'
+]
+
 omcount = 0
 gocount = 0
 bacount = 0
@@ -108,13 +117,11 @@ agcount = 0
 cacount = 0
 hacount = 0
 tokencount = 0;
+
 for token in tokens:
     ++tokencount
     for term in searchResults:
-        if term.term in token and term.term in termsgood and 'dis' not in term and 'un' not in term \
-                and 'in' not in term and 'anti' not in term:
-            term.increment()
-            ++gocount
+        if term.term in token and term.term in termsgood and not term.term.startswith(tuple(badprefixes)):
             print(token)
             print("/////This tone is good!")
 
@@ -128,8 +135,7 @@ for token in tokens:
             ++omcount
             print(token)
             print("/////This tone is ominous!")
-        if term.term in token and term.term in termspeaceful and 'dis' not in term and 'in' not in term \
-                and 'anti' not in term:
+        if term.term in token and term.term in termspeaceful and not term.term.startswith(tuple(badprefixes)):
             term.increment()
             ++pecount
             print("/////This tone is peaceful!")
@@ -141,16 +147,14 @@ for token in tokens:
             term.increment()
             ++cacount
             print("/////This tone is candid!")
-        if term.term in token and term.term in termshappy and 'dis' not in term and 'in' not in term \
-                and 'anti' not in term:
+        if term.term in token and term.term in termshappy and not term.term.startswith(tuple(badprefixes)):
             term.increment()
             ++hacount
             print("/////This tone is Happy!")
 
 
         for synonym in term.synonyms:
-            if synonym in token and term.term in termsgood and 'dis' not in term and 'in' not in term \
-                and 'anti' not in term:
+            if synonym in token and term.term in termsgood and not term.term.startswith(tuple(badprefixes)):
                 term.increment(synonym)
                 ++gocount
                 print("/////This tone is good! :)")
@@ -162,8 +166,7 @@ for token in tokens:
                 term.increment(synonym)
                 ++omcount
                 print("/////This tone is ominous! :)")
-            if synonym in token and term.term in termspeaceful and 'dis' not in term and 'in' not in term \
-                and 'anti' not in term:
+            if synonym in token and term.term in termspeaceful and not term.term.startswith(tuple(badprefixes)):
                 term.increment(synonym)
                 ++pecount
                 print("/////This tone is peaceful!")
@@ -171,8 +174,7 @@ for token in tokens:
                 term.increment(synonym)
                 ++cacount
                 print("/////This tone is candid! :)")
-            if synonym in token and term.term in termshappy and 'dis' not in term and 'in' not in term \
-                and 'anti' not in term:
+            if synonym in token and term.term in termshappy and not term.term.startswith(tuple(badprefixes)):
                 term.increment(synonym)
                 ++hacount
                 print("/////This tone is Happy!")
@@ -180,12 +182,12 @@ for token in tokens:
 tokecount = 0
 
 tokencount= 0
-for token in tokens[0:]:
+for token in tokens[0:20]:
     if gocount > bacount:
         print("For the first third of the book, the tone is mostly good.")
 
-for token in tokens[0:tokencount/3]:
-    tokecount
+for token in tokens[0:20]:
+    tokencount
     if gocount > bacount:
         print("For the first third of the book, the tone is mostly good")
         if pecount > tokecount/10:
@@ -208,3 +210,5 @@ for token in tokens[0:tokencount/3]:
 
 for term in searchResults:
     print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
+
+f.close()
