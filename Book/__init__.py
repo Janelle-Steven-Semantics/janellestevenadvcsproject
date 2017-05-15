@@ -11,9 +11,14 @@ from Synonym_extension import Synonym_extension
 from PyDictionary import PyDictionary
 thesaurus = PyDictionary()
 import sys
+import fileinput
 
-f = open("test.out", 'w')
-sys.stdout = f
+f = open('test.txt', 'r')
+f2 = open('Loadbook.txt','w')
+sys.stdout= f
+for token in f:
+    if 'Dashwood' in token:
+        f2.write(token.replace('Dashwood', 'batman'))
 
 
 terms = [
@@ -124,13 +129,11 @@ for token in tokens:
     ++tokencount
     for term in searchResults:
         if term.term in token and term.term in termsgood and not term.term.startswith(tuple(badprefixes)):
-            print(token)
             print("/////This tone is good!")
 
         if term.term in token and term.term in termsbad:
             term.increment()
             ++bacount
-            print(token)
             print("/////This tone is bad!")
         if term.term in token and term.term in termsominous:
             term.increment()
@@ -214,3 +217,4 @@ for term in searchResults:
     print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
 
 f.close()
+f2.close()
