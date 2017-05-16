@@ -13,12 +13,22 @@ thesaurus = PyDictionary()
 import sys
 import fileinput
 
-f = open('test.txt', 'r')
-f2 = open('Loadbook.txt','w')
-sys.stdout= f
+f = open('test.txt', 'r+')
+
+try:
+    f2 = open('Loadbook.txt','a')
+except:
+    print('something went wrong ')
+    sys.exit(0)
+
+
 for token in f:
     if 'Dashwood' in token:
-        f2.write(token.replace('Dashwood', 'batman'))
+       token= token.replace('Dashwood', 'batman')
+      # print("Alexa" + " " + line)
+       f2.write(token)
+sys.stdout = f
+
 
 
 terms = [
