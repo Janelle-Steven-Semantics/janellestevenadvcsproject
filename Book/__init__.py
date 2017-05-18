@@ -206,7 +206,7 @@ for token in tokens:
             ++omcount
 
         if synonym in token and synonym not in terms and term.term in termspeaceful and not term.term.startswith(tuple(badprefixes)):
-            print("The tone of this sentence is also partly aggressive.")
+            print("The tone of this sentence is also partly peaceful.")
             term.increment(synonym)
             ++pecount
 
