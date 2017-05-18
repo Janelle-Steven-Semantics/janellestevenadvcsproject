@@ -12,9 +12,22 @@ from PyDictionary import PyDictionary
 thesaurus = PyDictionary()
 import sys
 import fileinput
+
 f = open('output.html', 'r+')
 sys.stdout = f
 
+try:
+    f2 = open('Loadbook.txt','a')
+
+except:
+    print('something went wrong ')
+    sys.exit(0)
+
+for token in f:
+    if 'Dashwood' in token:
+       token= token.replace('Dashwood', 'batman')
+      # print("Alexa" + " " + line)
+       f2.write(token)
 
 terms = [
     'happy',
@@ -171,40 +184,36 @@ for token in tokens:
             color_positive(f, token)
             ++hacount
 
-        else:
-            print(token)
+    for synonym in term.synonyms:
+        if synonym in token and synonym not in terms and term.term in termsgood and not term.term.startswith( tuple(badprefixes)):
+            print("The tone of this sentence is also partly good.")
+            term.increment(synonym)
+            ++gocount
 
+        if synonym in token and synonym not in terms and term.term in termsbad:
+            print("The tone of this sentence is also partly bad.")
+            term.increment(synonym)
+            ++bacount
 
-        for synonym in term.synonyms:
-            if synonym in token and synonym not in terms and term.term in termsgood and not term.term.startswith(tuple(badprefixes)):
-                #print("The tone of this sentence is also partly good.")
-                term.increment(synonym)
-                ++gocount
+        if synonym in token and synonym not in terms and term.term in termsaggressive:
+            print("The tone of this sentence is also partly aggressive.")
+            term.increment(synonym)
+            ++agcount
 
-            if synonym in token and synonym not in terms and term.term in termsbad:
-                #print("The tone of this sentence is also partly bad.")
-                term.increment(synonym)
-                ++bacount
+        if synonym in token and synonym not in terms and term.term in termsominous:
+            print("The tone of this sentence is also partly ominous.")
+            term.increment(synonym)
+            ++omcount
 
-            if synonym in token and synonym not in terms and term.term in termsaggressive:
-                #print("The tone of this sentence is also partly aggressive.")
-                term.increment(synonym)
-                ++agcount
+        if synonym in token and synonym not in terms and term.term in termspeaceful and not term.term.startswith(tuple(badprefixes)):
+            print("The tone of this sentence is also partly aggressive.")
+            term.increment(synonym)
+            ++pecount
 
-            if synonym in token and synonym not in terms and term.term in termsominous:
-                #print("The tone of this sentence is also partly ominous.")
-                term.increment(synonym)
-                ++omcount
-
-            if synonym in token and synonym not in terms and term.term in termspeaceful and not term.term.startswith(tuple(badprefixes)):
-                #print("The tone of this sentence is also partly aggressive.")
-                term.increment(synonym)
-                ++pecount
-
-            if synonym in token and synonym not in terms and term.term in termshappy and not term.term.startswith(tuple(badprefixes)):
-                #print("The tone of this sentence is also partly happy.")
-                term.increment(synonym)
-                ++hacount
+        if synonym in token and synonym not in terms and term.term in termshappy and not term.term.startswith(tuple(badprefixes)):
+            print("The tone of this sentence is also partly happy.")
+            term.increment(synonym)
+            ++hacount
 
 
 tokecount = 0
@@ -240,3 +249,4 @@ for term in searchResults:
     print('There are {} occurrences of synonyms of {} (using {} as synonyms)'.format(term.count, term.term, term.synonyms))
 
 f.close()
+f2.close()
